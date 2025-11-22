@@ -9,11 +9,19 @@ load_dotenv()
 # -----------------------------------------------------------
 # 1. Conexión a Cosmos DB (Mongo API)
 # -----------------------------------------------------------
+import streamlit as st
 
 def get_collection():
-    uri = os.getenv("MONGO_URI")
-    db_name = os.getenv("MONGO_DB", "sample_airbnb")
-    coll_name = os.getenv("MONGO_COLLECTION", "listingsAndReviews")
+    # 1️⃣ En la nube usa streamlit secrets
+    if "MONGO_URI" in st.secrets:
+        uri = st.secrets["MONGO_URI"]
+        db_name = st.secrets["MONGO_DB"]
+        coll_name = st.secrets["MONGO_COLLECTION"]
+    else:
+        # 2️⃣ En local usa el .env
+        uri = os.getenv("MONGO_URI")
+        db_name = os.getenv("MONGO_DB", "sample_airbnb")
+        coll_name = os.getenv("MONGO_COLLECTION", "listingsAndReviews")
 
     client = MongoClient(uri)
     db = client[db_name]
