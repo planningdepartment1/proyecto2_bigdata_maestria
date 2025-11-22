@@ -1,5 +1,34 @@
+# ---- ENTORNO VIRTUAL ----
 .venv/
+venv/
+env/
+
+# ---- ARCHIVOS SENSIBLES ----
+.env
+*.env
+
+# ---- CACHE, TEMPORALES ----
 __pycache__/
 *.pyc
-.env
+*.pyo
+*.pyd
+*.swp
+*.swo
 
+# ---- ARCHIVOS DEL SISTEMA ----
+.DS_Store
+Thumbs.db
+
+# ---- ARCHIVOS DE LOG ----
+*.log
+
+# ---- JUPYTER ----
+.ipynb_checkpoints/
+
+# ---- MODELOS ----
+# (NO IGNORAR NADA, necesitamos subir .pkl)
+# ANTES tenías: models/*.pkl → ¡BORRADO!
+# Ahora no excluimos nada dentro de /models
+
+# ---- STREAMLIT ----
+.streamlit/
